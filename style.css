@@ -1,0 +1,1140 @@
+body {
+    font-family: sans-serif;
+    display: flex;
+    justify-content: flex-start;
+    align-items: stretch;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0;
+    background: linear-gradient(135deg, #ffcdd2 0%, #fff9c4 33%, #c8e6c9 66%, #bbdefb 100%);
+    height: 100vh; /* Altura exata da tela */
+    overflow: hidden;
+}
+
+body.centralizar-tudo {
+    justify-content: center; /* Centraliza verticalmente */
+    align-items: center;     /* Centraliza horizontalmente */
+}
+
+.container {
+    width: 90%; /* Largura ideal para dispositivos móveis */
+    max-width: 400px; /* Limite a largura em telas maiores */
+    background-color: #ffffff;
+    padding: 30px 20px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+    text-align: center;
+    border-radius: 10px;
+}
+
+/* Estilos da Logo e Nome do App */
+.logo-area {
+    margin-bottom: 20px;
+}
+
+.logo {
+    width: 80px; /* Ajuste o tamanho da sua logo */
+    height: auto;
+}
+
+h1 {
+    font-size: 1.5em;
+    margin: 5px 0 2px 0;
+}
+
+.logo-area p {
+    font-size: 0.9em;
+    color: #666;
+    /* Remove toda a margem para ficar colado no H1 */
+    margin: 0;
+}
+
+/* Estilos dos Campos de Entrada */
+.input-group {
+    margin-bottom: 15px;
+}
+
+input[type="text"], 
+input[type="email"], 
+input[type="password"] {
+    width: 100%;
+    padding: 15px;
+    margin: 5px 0;
+    border: 1px solid #ccc;
+    border-radius: 8px; /* Cantos arredondados como na imagem */
+    box-sizing: border-box; /* Garante que o padding não aumente a largura total */
+    font-size: 1em;
+}
+
+/* Estilos do Checkbox de Termos */
+.terms-checkbox {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+    margin-bottom: 25px;
+    font-size: 0.9em;
+}
+
+.terms-checkbox label {
+    margin-left: 5px;
+}
+
+/* Estilos do Botão Principal */
+.btn-primary {
+    width: 100%;
+    padding: 15px;
+    background-color: #1a73e8; /* Exemplo de um azul vibrante */
+    color: white;
+    border: none;
+    border-radius: 8px; /* Cantos arredondados */
+    font-size: 1.1em;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.btn-primary:hover {
+    background-color: #0b5fb6;
+}
+
+/* Estilo do link de Login */
+.login-prompt {
+    margin-top: 20px;
+    font-size: 0.9em;
+}
+
+.login-prompt a {
+    color: #1a73e8;
+    text-decoration: none;
+}
+
+/* --- Estilo do Botão de Tema --- */
+.theme-btn {
+    position: absolute; /* Permite posicionar livremente */
+    top: 20px;          /* Distância do topo */
+    right: 20px;        /* Distância da direita */
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 50%;
+    transition: background-color 0.3s;
+    color: #333; /* Cor do ícone no modo claro */
+}
+
+.theme-btn:hover {
+    background-color: rgba(0,0,0,0.1); /* Efeito hover sutil */
+}
+
+.main-content {
+    max-width: 1200px; /* Largura máxima do conteúdo central */
+    margin: 0 auto;    /* Centraliza o bloco no meio da tela */
+    padding: 150px 20px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* --- Cabeçalho Desktop --- */
+.site-header {
+    background-color: white;
+    box-shadow: 0 10px 10px rgba(0,0,0,0.15);
+    padding: 20px 0;
+    width: 100%;
+    flex-shrink: 0; /* Garante que o header não encolha */
+    z-index: 10;
+}
+
+
+.header-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between; /* Separa Logo (Esq) e Menu (Dir) */
+    align-items: center;
+    padding: 0 20px;
+}
+
+/* --- Ajuste Fino do Cabeçalho da Home --- */
+
+.header-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* Se quiser alinhar o texto à esquerda junto com a logo: */
+    align-items: flex-start; 
+}
+
+
+.header-text h1 {
+    font-size: 1.5rem; /* Tamanho do SPECTRUM */
+    color: #333;
+    font-weight: 550; /* Deixa bem negrito */
+    
+    /* O Segredo está aqui: */
+    margin: 0;           /* Remove margens externas */
+    line-height: 1;      /* Remove o espaço extra acima e abaixo das letras */
+    margin-bottom: -2px; /* Puxa o texto de baixo um pouquinho pra cima */
+}
+
+.header-text p {
+    font-size: 0.85rem; /* Tamanho do Connect & Thrive */
+    color: #666;
+    font-weight: 500;
+    
+    /* Garante que não tenha espaço empurrando para baixo */
+    margin: 0; 
+}
+
+.logo-section {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.header-logo {
+    width: 45px;
+}
+
+.desktop-nav {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: #666;
+    font-weight: 500;
+    font-size: 1rem;
+    transition: color 0.3s;
+}
+
+.nav-link:hover, .nav-link.active {
+    color: #1a73e8; /* Azul destaque */
+}
+
+/* Botão de tema dentro do menu */
+.nav-theme-btn {
+    background: none;
+    border: 1px solid #eee;
+    border-radius: 50%;
+    cursor: pointer;
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* --- Seção de Boas-Vindas --- */
+.welcome-section {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.welcome-section h2 {
+    font-size: 2.5em; /* Maior para desktop */
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.subtitle {
+    font-size: 1.2em;
+    color: #666;
+}
+
+/* --- Grid de Cartões (Lado a Lado) --- */
+.cards-grid {
+    display: grid;
+    /* Cria 3 colunas de tamanho igual. Se a tela for pequena, ajusta automatico */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.card {
+    border-radius: 20px;
+    padding: 30px;
+    color: white;
+    display: flex;
+    flex-direction: column; /* Ícone em cima, texto embaixo */
+    align-items: flex-start;
+    justify-content: space-between;
+    min-height: 250px; /* Altura mínima para ficarem iguais */
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-10px); /* Sobe um pouco ao passar o mouse */
+}
+
+.card h3 {
+    font-size: 1.5em;
+    margin: 0px 0 10px 0;
+}
+
+.card p {
+    font-size: 1em;
+    opacity: 0.95;
+    line-height: 1.5;
+    margin-bottom: 25px;
+}
+
+.card-btn {
+    background-color: rgba(255,255,255,0.2); /* Botão translúcido */
+    border: 1px solid rgba(255,255,255,0.5);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: bold;
+    align-self: flex-start;
+    text-decoration: none;  /* Remove o sublinhado do link */
+    display: inline-block;  /* Faz o link aceitar tamanho e padding */
+    text-align: center;     /* Garante texto no meio */
+    font-family: inherit;   /* Usa a mesma fonte do resto do site */
+    font-size: 0.9em;       /* Garante tamanho igual */
+    line-height: normal;    /* Corrige alinhamento vertical */
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.card-btn:hover {
+    background-color: white;
+    color: #333;
+}
+
+/* Cores dos Cartões (Mantendo a identidade) */
+.card-medicos { background-color: #26a69a; }      /* Verde */
+.card-atividades { background-color: #eca945; }   /* Laranja */
+.card-comunidades { background-color: #42a5f5; }  /* Azul */
+
+/* --- Ajustes do Dark Mode para o novo layout --- */
+body.dark-mode .site-header {
+    background-color: #1e1e1e;
+    border-bottom: 1px solid #333;
+}
+
+body.dark-mode .header-text h1 {
+    color: #ffffff;
+}
+
+body.dark-mode .header-text p {
+    color: #e0e0e0; 
+}
+
+body.dark-mode .nav-link {
+    color: #ccc;
+}
+body.dark-mode .nav-link:hover {
+    color: #fff;
+}
+body.dark-mode .welcome-section h2 {
+    color: #fff;
+}
+body.dark-mode .subtitle {
+    color: #aaa;
+}
+
+body.dark-mode {
+    /* Fundo escuro suave (não preto total, para conforto visual) */
+    background: linear-gradient(135deg, #2c3e50 0%, #000000 100%);
+    color: #f0f0f0;
+}
+
+/* Ajuste da caixa branca para cinza escuro */
+body.dark-mode .container {
+    background-color: #1e1e1e;
+    color: #e0e0e0;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+}
+
+/* Ajuste dos inputs no modo escuro */
+body.dark-mode input {
+    background-color: #2d2d2d;
+    border-color: #444;
+    color: #fff;
+}
+
+/* Ajuste do botão de tema no modo escuro */
+body.dark-mode .theme-btn {
+    color: #fff;
+}
+
+body.dark-mode .theme-btn:hover {
+    background-color: rgba(255,255,255,0.1);
+}
+
+body.dark-mode .nav-theme-btn {
+    color: #ffffff;        /* Muda o ícone para branco puro */
+    border-color: #ffffff; /* Muda a borda do círculo para branco */
+}
+
+/* Opcional: Efeito ao passar o mouse no modo escuro */
+body.dark-mode .nav-theme-btn:hover {
+    background-color: rgba(255, 255, 255, 0.2); /* Fundo semi-transparente branco */
+}
+
+/* Opcional: Ajuste da sombra para ficar mais sutil no escuro */
+body.dark-mode .card {
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    border: 1px solid #333; /* Uma borda fina ajuda a destacar o card do fundo escuro */
+}
+
+/* --- ESTILOS DAS PÁGINAS NOVAS --- */
+
+/* 1. Estilos de Notificações */
+.notif-item {
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    border-left: 5px solid transparent; 
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.notif-item:hover {
+    /* 1. A barra azul aparece */
+    border-left-color: #42a5f5; 
+    
+    /* 2. O cartão "salta" pra frente */
+    /* translateY(-5px) faz ele subir 5 pixels */
+    transform: translateY(-5px); 
+    
+    /* A sombra aumenta para dar a impressão de altura 3D */
+    box-shadow: 0 10px 20px rgba(0,0,0,0.15); 
+}
+
+
+.notif-icon {
+    font-size: 1.5em;
+    background: #f0f4f8;
+    padding: 10px;
+    border-radius: 50%;
+}
+
+.notif-text h3 {
+    margin: 0 0 5px 0;
+    font-size: 1.1em;
+    color: #333;
+}
+
+.notif-text p {
+    margin: 0;
+    color: #666;
+    font-size: 0.9em;
+}
+
+.notif-time {
+    margin-left: auto; /* Empurra a hora para a direita */
+    font-size: 0.8em;
+    color: #999;
+    white-space: nowrap;
+}
+
+/* 2. Estilos de Eventos */
+.event-card {
+    background: white;
+    border-radius: 15px;
+    padding: 20px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+.event-date {
+    background: #ffa726; /* Laranja do tema */
+    color: white;
+    padding: 10px 15px;
+    border-radius: 10px;
+    text-align: center;
+    min-width: 60px;
+}
+
+.event-date .day {
+    display: block;
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+.event-date .month {
+    font-size: 0.8em;
+    text-transform: uppercase;
+}
+
+.event-details {
+    display: flex;
+    flex-direction: column; /* Garante que fique um embaixo do outro */
+    justify-content: center;
+}
+
+.event-details h3 {
+    margin: 0 0 5px 0;
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #333;
+}
+
+.event-details p {
+    margin: 0 0 15px 0; /* 15px de espaço entre o texto e o botão */
+    color: #666;
+    line-height: 1.4; /* Melhora a leitura das linhas */
+}
+
+.event-btn {
+    align-self: flex-start; /* Impede o botão de esticar a largura toda */
+    padding: 10px 20px;
+    border-radius: 20px; /* Mais arredondado */
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.8em;
+    transition: background 0.3s, transform 0.2s;
+}
+
+.event-btn:hover {
+    background-color: #1d8a7f; /* Cor mais escura ao passar o mouse */
+    transform: scale(1.05); /* Leve aumento */
+}
+
+/* 3. Estilos de Perfil */
+.profile-card {
+    background: white;
+    max-width: 600px;
+    margin: 0 auto; /* Centraliza o cartão */
+    border-radius: 20px;
+    padding: 40px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    text-align: center;
+}
+
+.avatar-circle {
+    width: 100px;
+    height: 100px;
+    background-color: #e0e0e0;
+    border-radius: 50%;
+    margin: 0 auto 15px auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3em;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1); /* Sombra suave */
+    color: #5e35b1;
+}
+
+.profile-options {
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.profile-header {
+    display: flex;            /* Transforma em flexbox */
+    flex-direction: column;   /* Um item embaixo do outro */
+    align-items: center;      /* Centraliza tudo horizontalmente */
+    margin-bottom: 30px;
+    justify-content: center;
+    text-align: center;  /* Centraliza o texto dentro dos blocos */
+    width: 100%;         /* Garante que o container ocupe tudo */
+    margin-bottom: 30px;
+}
+
+.profile-header h2 {
+    margin: 15px 0 5px 0; /* 15px em cima, 5px embaixo (perto do email) */
+    font-size: 1.5em;
+    color: #333;
+    width: 100%;       /* Força o título a ter largura total para centralizar */
+    text-align: center;
+}
+
+.profile-header p {
+    margin: 0;           /* Remove qualquer espaço extra */
+    color: #666;         /* Cinza suave */
+    font-size: 0.95em;
+    width: 100%;       /* Força o parágrafo a ter largura total */
+    text-align: center;
+    display: block;
+}
+
+.option-btn {
+    padding: 15px;
+    background-color: #f9f9f9;
+    border: 1px solid #eee;
+    border-radius: 8px;
+    cursor: pointer;
+    text-align: left;
+    font-size: 1em;
+    color: #555;
+    transition: background 0.2s;
+}
+
+.option-btn:hover {
+    background-color: #f0f0f0;
+}
+
+.logout-btn {
+    padding: 15px;
+    background-color: #ffebee;
+    color: #c62828;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.logout-btn:hover {
+    background-color: #ffcdd2;
+}
+
+/* --- Adaptação dessas novas páginas para MODO ESCURO --- */
+body.dark-mode .notif-item,
+body.dark-mode .event-card,
+body.dark-mode .profile-card {
+    background-color: #1e1e1e;
+    color: #fff;
+}
+
+body.dark-mode .notif-text h3,
+body.dark-mode .event-details h3,
+body.dark-mode .option-btn {
+    color: #fff;
+}
+
+body.dark-mode .notif-text p,
+body.dark-mode .event-details p {
+    color: #aaa;
+}
+
+body.dark-mode .notif-icon {
+    background-color: #333;
+}
+
+body.dark-mode .option-btn {
+    background-color: #2d2d2d;
+    border-color: #444;
+}
+
+body.dark-mode .option-btn:hover {
+    background-color: #444;
+}
+
+/* --- Estilos da Página de Suporte (Chat) --- */
+
+.back-link {
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+    font-size: 1em;
+}
+
+/* Container principal do chat */
+.chat-container-full {
+    flex: 1; /* Ocupa todo o espaço que sobra embaixo do header */
+    width: 100%;
+    background-color: #f0f2f5;
+    display: flex;
+    flex-direction: column; /* Organiza: Mensagens em cima, Input embaixo */
+    position: relative;
+    overflow: hidden;
+}
+
+/* Área das mensagens (com rolagem) */
+.chat-box {
+    flex: 1;
+    width: 100%;       /* Ocupa a tela toda de ponta a ponta */
+    max-width: none;   /* Removemos o limite aqui */
+    margin: 0;
+    padding: 20px 0;   /* Padding vertical apenas */
+    
+    overflow-y: auto;  /* A barra de rolagem vai aparecer aqui (na borda da tela) */
+    scroll-behavior: smooth;
+    
+    display: flex;
+    flex-direction: column;
+}
+
+/* Balões de Mensagem (Geral) */
+.message {
+    max-width: 80%;
+    padding: 12px 16px;
+    border-radius: 15px;
+    font-size: 0.95em;
+    line-height: 1.4;
+    position: relative;
+    animation: fadeIn 0.3s ease;
+}
+
+.message-row {
+    display: flex;
+    align-items: flex-end;
+    margin-bottom: 10px;
+    
+    /* TRUQUE DE CENTRALIZAÇÃO: */
+    width: 100%;
+    max-width: 1000px; /* O conteúdo não passa daqui */
+    margin-left: auto; /* Empurra para o centro */
+    margin-right: auto;/* Empurra para o centro */
+    padding: 0 40px;   /* Espaço lateral para não colar no limite invisível */
+    box-sizing: border-box;
+}
+
+.bot-row {
+    justify-content: flex-start; /* IA na esquerda */
+}
+
+.user-row {
+    justify-content: flex-end; /* Usuário na direita */
+}
+
+/* Balão da IA (Esquerda, Branco) */
+.bot-message {
+    align-self: flex-start;
+    background-color: white;
+    color: #333;
+    border-bottom-left-radius: 2px; /* Pontinha do balão */
+    box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+}
+
+
+/* Balão do Usuário (Direita, Azul) */
+.user-message {
+    align-self: flex-end;
+    background-color: #42a5f5; /* Azul do tema */
+    color: white;
+    border-bottom-right-radius: 2px; /* Pontinha do balão */
+    box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+}
+
+/* Área de Input (Rodapé) */
+.input-area {
+    width: 100%;
+    background-color: #f0f2f5; /* Mesma cor do fundo */
+    padding: 20px;
+    display: flex;
+    justify-content: center; /* Centraliza a barra de digitar */
+    border-top: 1px solid #ddd;
+    flex-shrink: 0; /* Garante que a barra não suma ou encolha */
+    z-index: 10;
+}
+
+.input-area input {
+    width: 100%;
+    max-width: 900px; /* Barra de digitar não fica infinita */
+    padding: 15px 20px;
+    border-radius: 30px;
+    border: 1px solid #ccc;
+    background: white;
+    outline: none;
+}
+
+.input-area button {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    background-color: #26a69a; /* Verde do tema */
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 1.2em;
+    transition: transform 0.2s;
+}
+
+.input-area button:hover {
+    transform: scale(1.1);
+}
+
+/* Animação suave ao aparecer mensagem */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Modo Escuro para o Chat */
+body.dark-mode .chat-container { background-color: #121212; }
+body.dark-mode .input-area { background-color: #1e1e1e; border-top-color: #333; }
+body.dark-mode .bot-message { background-color: #2d2d2d; color: white; }
+body.dark-mode .input-area input { background-color: #2d2d2d; color: white; border-color: #444; }
+body.dark-mode .back-link { color: white; }
+
+.chat-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2em;
+    flex-shrink: 0; /* Impede que o avatar encolha */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.bot-avatar {
+    background-color: #fff;
+    margin-right: 10px; /* Espaço entre avatar e balão */
+    border: 1px solid #ddd;
+}
+
+.user-avatar {
+    background-color: #5e35b1; /* Roxo do perfil */
+    color: white;
+    margin-left: 10px; /* Espaço entre balão e avatar */
+    font-weight: bold;
+}
+
+/* --- BALÕES (Ajustados para o novo layout) --- */
+.message {
+    max-width: 60%; /* Balão não ocupa a linha toda */
+    padding: 15px 20px;
+    border-radius: 18px;
+    font-size: 1em;
+    line-height: 1.5;
+    position: relative;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+}
+
+.bot-message {
+    background-color: white;
+    color: #333;
+    border-bottom-left-radius: 4px; /* Pontinha no canto */
+}
+
+.user-message {
+    background-color: #0084ff; /* Azul estilo Messenger */
+    color: white;
+    border-bottom-right-radius: 4px; /* Pontinha no canto */
+}
+
+/* --- BOTÃO DE SUPORTE HUMANO --- */
+.human-support-btn {
+    background-color: #ffebee;
+    color: #c62828;
+    border: 1px solid #ffcdd2;
+    padding: 8px 15px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 0.9em;
+    transition: all 0.2s;
+}
+
+.human-support-btn:hover {
+    background-color: #ef9a9a;
+    color: white;
+}
+
+/* Ajustes da Área de Input */
+.input-area {
+    background-color: white;
+    padding: 20px;
+    border-top: 1px solid #ddd;
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+.input-area input {
+    padding: 15px;
+    font-size: 1em;
+    border-radius: 30px;
+    background-color: #f0f2f5;
+    border: none;
+}
+
+.form-card, .settings-card {
+    background: white;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.form-card label {
+    display: block;
+    margin-bottom: 8px;
+    color: #555;
+    font-weight: 600;
+}
+
+/* --- Itens de Configuração (Acessibilidade) --- */
+.setting-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 0;
+}
+
+.setting-info h3 {
+    margin: 0 0 5px 0;
+    font-size: 1.1em;
+    color: #333;
+}
+
+.setting-info p {
+    margin: 0;
+    font-size: 0.9em;
+    color: #777;
+}
+
+/* Botões de Fonte (A- / A+) */
+.font-controls {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: #f0f0f0;
+    padding: 5px;
+    border-radius: 10px;
+}
+
+.font-btn {
+    background: white;
+    border: 1px solid #ddd;
+    width: 35px;
+    height: 35px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    color: #333;
+}
+
+.font-btn:hover {
+    background: #e0e0e0;
+}
+
+/* --- Switch (Botão de Ligar/Desligar) --- */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 50px;
+    height: 28px;
+}
+
+.switch input { 
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: .4s;
+    border-radius: 34px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 20px;
+    width: 20px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
+}
+
+input:checked + .slider {
+    background-color: #26a69a; /* Verde do tema */
+}
+
+input:checked + .slider:before {
+    transform: translateX(22px);
+}
+
+/* --- CLASSES DE ACESSIBILIDADE (JS ATIVA ESSAS CLASSES) --- */
+
+/* Fonte Grande (Aumenta tudo no site) */
+body.fonte-grande {
+    font-size: 120%; /* Aumenta 20% */
+}
+
+/* Fonte Dislexia (Muda a fonte para Comic Sans ou Arial Rounded que são boas) */
+body.dyslexia-font {
+    font-family: 'Comic Sans MS', 'Chalkboard SE', 'Arial Rounded MT Bold', sans-serif !important;
+    line-height: 1.6; /* Aumenta espaço entre linhas */
+}
+
+/* Adaptação para Modo Escuro */
+body.dark-mode .form-card,
+body.dark-mode .settings-card,
+body.dark-mode .font-controls,
+body.dark-mode .font-btn {
+    background-color: #1e1e1e;
+    color: white;
+    border-color: #444;
+}
+
+body.dark-mode .setting-info h3,
+body.dark-mode .form-card label {
+    color: white;
+}
+
+.section-title {
+    font-size: 1.2em;
+    color: #555;
+    margin-bottom: 15px;
+    margin-top: 20px;
+    padding-left: 5px;
+    border-left: 4px solid #42a5f5; /* Detalhe azul ao lado do título */
+    padding-left: 10px;
+}
+
+.activity-grid {
+    display: grid;
+    /* Desktop: 2 colunas. Celular: 1 coluna */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px;
+    margin-bottom: 30px;
+}
+
+.activity-card {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding: 20px 20px 45px 20px !important;
+    height: 100%;
+    box-sizing: border-box;
+    border-radius: 16px;
+    color: white;
+    text-decoration: none;
+    transition: transform 0.2s, box-shadow 0.2s;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+
+    align-items: flex-start !important;
+    text-align: left !important;
+    gap: 12px;
+}
+
+.activity-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+}
+
+/* Ícone grande e translúcido no fundo para dar estilo */
+.act-icon {
+    font-size: 3em;
+    margin-right: 20px;
+    background: rgba(255,255,255,0.2);
+    width: 70px;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+}
+
+.act-info {
+    margin-bottom: o !important;       /* Espaço reservado para o botão não cobrir o texto */
+}
+
+.act-info h3 {
+    margin: 0 0 5px 0;
+    font-size: 1.3em;
+}
+
+.act-info p {
+    margin: 0;
+    font-size: 0.9em;
+    opacity: 0.9;
+    line-height: 1.4;
+}
+
+.play-btn {
+    position: absolute;
+    bottom: 15px;
+    right: 20px;
+    z-index: 10;
+    font-size: 0.85em;
+    font-weight: bold;
+    background: rgba(0,0,0,0.1);
+    padding: 5px 12px;
+    border-radius: 20px;
+    opacity: 0; /* Escondido até passar o mouse */
+    transform: translateX(10px);
+    transition: all 0.3s;
+}
+
+.activity-card:hover .play-btn {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* CORES ESPECÍFICAS (Baseadas na imagem) */
+.color-green {
+    background: linear-gradient(135deg, #66bb6a, #43a047); /* Verde */
+}
+
+.color-blue {
+    background: linear-gradient(135deg, #42a5f5, #1e88e5); /* Azul */
+}
+
+.color-orange {
+    background: linear-gradient(135deg, #ffa726, #fb8c00); /* Laranja */
+}
+
+.color-yellow {
+    background: linear-gradient(135deg, #fbc02d, #f9a825); /* Amarelo Ouro */
+    color: #fff; /* Texto branco fica melhor aqui no amarelo escuro */
+}
+
+/* Modo Escuro */
+body.dark-mode .section-title {
+    color: #ddd;
+}
+
+.color-purple {
+    background: linear-gradient(135deg, #ab47bc, #8e24aa); /* Roxo */
+}
+
+.color-teal {
+    background: linear-gradient(135deg, #26a69a, #00897b); /* Verde Água */
+}
+
+.color-pink {
+    background: linear-gradient(135deg, #ec407a, #d81b60); /* Rosa Pink */
+}
+
+.color-indigo {
+    background: linear-gradient(135deg, #5c6bc0, #3949ab); /* Azul Índigo */
+}
+
+.color-red {
+    background: linear-gradient(135deg, #ef5350, #e53935); /* Vermelho Suave */
+}
+
+/* Ajuste para o grid ficar sempre com 3 colunas em telas grandes */
+@media (min-width: 900px) {
+    .activity-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+#centralizar{
+    text-align: center;
+    display: flex;
+}
+
+.header-text2 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#frase {
+    margin-top: 2px;
+    margin-bottom: 0;
+}

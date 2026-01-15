@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spectrum - Comunidades</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+        
+        body {
+            /* Fundo gradiente Claro (Padrão) */
+            background: linear-gradient(135deg, #ffcdd2 0%, #fff9c4 33%, #c8e6c9 66%, #bbdefb 100%);
+            min-height: 100vh;
+            color: #1f2937; /* Cor texto padrão */
+            font-family: 'Inter', sans-serif;
+            transition: all 0.3s ease;
+            padding-bottom: 80px; /* Espaço para a navbar mobile */
+        }
+
+        /* --- MODO ESCURO --- */
+        body.dark-mode {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
+            color: #f3f4f6;
+        }
+        body.dark-mode .header-bg,
+        body.dark-mode .mobile-nav-bar,
+        body.dark-mode .bg-white {
+            background-color: #1f2937;
+            border-color: #374151;
+            color: #f3f4f6;
+        }
+        body.dark-mode .text-gray-900 { color: #ffffff; }
+        body.dark-mode .text-gray-800 { color: #e5e7eb; }
+        body.dark-mode .text-gray-600, 
+        body.dark-mode .text-gray-500 { color: #9ca3af; }
+
+        .header-bg {
+            background-color: #ffffff;
+            border-bottom: 1px solid #e5e7eb;
+            transition: background-color 0.3s ease;
+        }
+        .mobile-nav-bar {
+            background-color: #ffffff;
+            border-top: 1px solid #e5e7eb;
+            box-shadow: 0 -4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+        
+        .interactive-card {
+            transition: all 0.3s ease;
+            border: 1px solid #f3f4f6; 
+        }
+        .interactive-card:hover {
+            transform: translateY(-5px) scale(1.02); 
+            box-shadow: 0 15px 25px -5px rgba(0, 0, 0, 0.2), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            cursor: pointer;
+        }
+
+        .post-card {
+            border: 1px solid #e5e7eb;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+        }
+
+        .liked-icon {
+            color: #3b82f6; 
+            fill: currentColor;
+        }
+        
+        /* Classes controladas pelo JS */
+        .hidden-section { display: none; }
+        .hidden-tab { display: none; }
+    </style>
+</head>
+<body class="flex flex-col">
+
+    <header class="header-bg p-4 sticky top-0 z-20 w-full hidden md:block">
+        <div class="max-w-7xl mx-auto grid grid-cols-[1fr_auto_1fr] items-center">
+    
+            <nav id="desktop-nav" class="justify-self-start flex items-center gap-4">
+                <a href="home.html" class="text-gray-800 font-bold text-sm hover:opacity-70 no-underline flex items-center gap-1">
+                    <span class="text-lg pb-1">←</span> Voltar
+                </a>
+            
+            </nav>
+        
+            <div></div>
+
+           
+            </div>
+        </div>
+    </header>
+
+    <main class="flex-grow p-4 md:p-8 max-w-4xl mx-auto w-full mb-20 md:mb-0">
+        
+        <div id="content-home" class="main-content">
+            
+            <div class="text-center pt-4 pb-8">
+                <h2 class="text-3xl font-black text-gray-900">Participe de Comunidades</h2>
+                <p class="text-gray-500 mt-1">Conecte-se e compartilhe experiências</p>
+            </div>
+
+            <div class="flex justify-center mb-8">
+                <div class="flex space-x-6">
+                    <button id="tab-grupos" onclick="switchTab('grupos')" class="py-2 px-4 border-b-2 border-sky-600 text-sky-600 font-semibold transition duration-200">
+                        Meus Grupos
+                    </button>
+                    <button id="tab-explorar" onclick="switchTab('explorar')" class="py-2 px-4 border-b-2 border-transparent text-gray-500 hover:text-sky-600 transition duration-200">
+                        Explorar
+                    </button>
+                    <button id="tab-seguindo" onclick="switchTab('seguindo')" class="py-2 px-4 border-b-2 border-transparent text-gray-500 hover:text-sky-600 transition duration-200">
+                        Seguindo
+                    </button>
+                </div>
+            </div>
+
+            <div id="content-grupos" class="space-y-4">
+                <div class="interactive-card bg-white p-4 rounded-xl shadow-md flex items-start space-x-4">
+                    <div class="bg-green-50 p-3 rounded-full text-green-600">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a3 3 0 0 0-3 3v2a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"/><path d="M7 7h10"/><path d="M12 17v4"/><path d="M15 21H9"/><path d="M15 13h1a2 2 0 0 1 2 2v2a2 2 0 0 1-2 2h-1"/><path d="M9 13h-1a2 2 0 0 0-2 2v2a2 2 0 0 0 2 2h1"/></svg>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-lg text-green-700">TDAH</h3>
+                        <p class="text-sm text-gray-600">Compartilhe desafios e estratégias para o dia a dia.</p>
+                    </div>
+                </div>
+                
+                <div class="interactive-card bg-white p-4 rounded-xl shadow-md flex items-start space-x-4">
+                    <div class="bg-sky-50 p-3 rounded-full text-sky-600">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="8.5" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-lg text-sky-700">Pais de Crianças Pequenas</h3>
+                        <p class="text-sm text-gray-600">Dicas e apoio para a jornada da primeira infância.</p>
+                        <p class="text-xs text-gray-400 mt-1">Leo_Pai M: Alguém com dica para foco nos estudos...</p>
+                    </div>
+                </div>        
+
+                <div class="interactive-card bg-white p-4 rounded-xl shadow-md flex items-start space-x-4 relative">
+                    <div class="bg-orange-50 p-3 rounded-full text-orange-600">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-lg text-orange-700">Vida Adulta Autista</h3>
+                        <p class="text-sm text-gray-600">Dicas sobre independência e carreira.</p>
+                        <p class="text-xs text-gray-400 mt-1">Leo_Pai Feliz: Meu filho começou a falar! 🎉</p>
+                    </div>
+                    <span class="absolute top-2 right-2 bg-red-500 text-white text-xs font-bold px-2 py-0.5 rounded-full">12</span>
+                </div>
+            </div>
+
+            <div id="content-explorar" class="hidden-tab space-y-6">
+                <h3 class="text-xl font-bold text-gray-800 text-center">Encontre sua comunidade ideal</h3>
+                <input type="text" id="search-input" placeholder="Pesquisar por tema..." class="w-full p-3 border border-gray-300 rounded-lg focus:ring-sky-500 focus:border-sky-500 shadow-sm text-gray-800">
+                
+                <div class="bg-white p-4 rounded-xl shadow-md">
+                    <p class="font-semibold text-gray-700 mb-3">Temas Populares:</p>
+                    <div class="flex flex-wrap gap-2">
+                        <span onclick="selectTheme('TDAH')" class="bg-sky-100 text-sky-800 text-sm font-medium px-3 py-1 rounded-full cursor-pointer hover:bg-sky-200">TDAH</span>
+                        <span onclick="selectTheme('Autismo - TEA')" class="bg-green-100 text-green-800 text-sm font-medium px-3 py-1 rounded-full cursor-pointer hover:bg-green-200">Autismo - TEA</span>
+                        <span onclick="selectTheme('Vida Adulta')" class="bg-orange-100 text-orange-800 text-sm font-medium px-3 py-1 rounded-full cursor-pointer hover:bg-orange-200">Vida Adulta</span>
+                    </div>
+                </div>
+
+                <div id="more-communities" class="hidden-tab space-y-4 pt-4 border-t border-gray-200">
+                    <h4 class="text-lg font-bold text-gray-700">Comunidades de Aprofundamento:</h4>
+                    <div class="interactive-card bg-white p-4 rounded-xl shadow-md flex items-start space-x-4">
+                        <div class="bg-purple-50 p-3 rounded-full text-purple-600">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><path d="M16 3a4 4 0 0 0-4 4v.5"/></svg>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-lg text-purple-700">Ansiedade Social</h3>
+                            <button class="mt-2 text-xs bg-purple-500 hover:bg-purple-600 text-white font-medium py-1 px-3 rounded-full transition">Juntar-se</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="text-center">
+                    <button id="load-more-btn" onclick="loadMoreCommunities()" class="bg-sky-500 hover:bg-sky-600 text-white font-semibold py-2 px-6 rounded-lg shadow transition">
+                        Ver mais comunidades
+                    </button>
+                </div>
+            </div>
+
+            <div id="content-seguindo" class="hidden-tab space-y-4">
+                <h3 class="text-xl font-bold text-gray-800">Últimas Atividades</h3>
+                
+                <div id="post-1" class="post-card bg-white p-4 rounded-xl space-y-3">
+                    <div class="flex items-center space-x-3">
+                        <span class="text-green-600 font-medium bg-green-50 px-3 py-1 rounded-full text-xs">TDAH</span>
+                        <p class="text-sm text-gray-500">Postado por: <span class="font-semibold text-gray-700">Manu_TDAH</span></p>
+                    </div>
+                    <p class="text-gray-800">"Alguém tem uma dica de app/ferramenta para organizar tarefas?"</p>
+                    <div class="flex space-x-4 text-gray-500 text-sm">
+                        <button id="like-1" onclick="toggleLike(1)" class="flex items-center space-x-1 cursor-pointer transition">
+                            <svg id="like-icon-1" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.76l.3-2.64A2 2 0 0 0 16 13h-2z"/></svg>
+                            <span id="like-count-1">42</span> <span>Curtidas</span>
+                        </button>
+                        <button onclick="toggleComments(1)" class="flex items-center space-x-1 cursor-pointer hover:text-sky-600">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                            <span id="comment-count-1">15</span> <span>Comentários</span>
+                        </button>
+                    </div>
+                    <div id="comments-1" class="hidden-tab mt-4 pt-3 border-t border-gray-100 space-y-2">
+                        <div class="text-sm"><span class="font-semibold text-sky-600">Ana_Org:</span> Tenta o Trello!</div>
+                    </div>
+                </div>
+
+                <div id="post-2" class="post-card bg-white p-4 rounded-xl space-y-3">
+                    <div class="flex items-center space-x-3">
+                        <span class="text-orange-600 font-medium bg-orange-50 px-3 py-1 rounded-full text-xs">Vida Adulta Autista</span>
+                        <p class="text-sm text-gray-500">Postado por: <span class="font-semibold text-gray-700">João_Asperger</span></p>
+                    </div>
+                    <p class="text-gray-800">"Consegui organizar meu escritório com o método KonMari!"</p>
+                    <div class="flex space-x-4 text-gray-500 text-sm">
+                        <button id="like-2" onclick="toggleLike(2)" class="flex items-center space-x-1 cursor-pointer transition">
+                            <svg id="like-icon-2" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.76l.3-2.64A2 2 0 0 0 16 13h-2z"/></svg>
+                            <span id="like-count-2">88</span> <span>Curtidas</span>
+                        </button>
+                        <button onclick="toggleComments(2)" class="flex items-center space-x-1 cursor-pointer hover:text-sky-600">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                            <span id="comment-count-2">34</span> <span>Comentários</span>
+                        </button>
+                    </div>
+                    <div id="comments-2" class="hidden-tab mt-4 pt-3 border-t border-gray-100 space-y-2">
+                         <div class="text-sm"><span class="font-semibold text-sky-600">Mario:</span> Ótima dica!</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="content-calendar" class="main-content hidden-section text-center pt-10">
+            <h2 class="text-2xl font-bold text-gray-800">Calendário</h2>
+            <p class="text-gray-500">Conteúdo do calendário aqui.</p>
+        </div>
+        <div id="content-notifications" class="main-content hidden-section text-center pt-10">
+            <h2 class="text-2xl font-bold text-gray-800">Notificações</h2>
+            <p class="text-gray-500">Suas notificações aparecerão aqui.</p>
+        </div>
+        <div id="content-profile" class="main-content hidden-section text-center pt-10">
+            <h2 class="text-2xl font-bold text-gray-800">Perfil</h2>
+            <p class="text-gray-500">Configurações do usuário.</p>
+        </div>
+
+    </main>
+    
+    <script src="theme.js"></script>
+    
+</body>
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spectrum - Início</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header class="site-header">
+        <div class="header-content">
+            <div class="logo-section">
+                <img src="img/logo_spectrum.png" alt="Logo" class="header-logo">
+                <div class="header-text">
+                    <h1>SPECTRUM</h1>
+                    <p>Connect & Thrive</p>
+                </div>
+            </div>
+
+            <nav class="desktop-nav">
+                <a href="home.html" class="nav-link active">Home</a>
+                <a href="notificacoes.html" class="nav-link">Notificações</a>
+                <a href="eventos.html" class="nav-link">Eventos</a>
+                <a href="perfil.html" class="nav-link">Perfil</a>
+                
+            </nav>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <section class="welcome-section">
+            <h2 id="saudacao">Bem-vindo(a)!</h2>
+            <p class="subtitle">Explore as possibilidades e conecte-se com o que importa.</p>
+        </section>
+
+        <section class="cards-grid">
+            <div class="card card-medicos">
+                <div class="card-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="35" height="33" fill="currentColor" class="bi bi-person" viewBox="0 0 16 16">
+                        <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6m2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0m4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4m-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10s-3.516.68-4.168 1.332c-.678.678-.83 1.418-.832 1.664z"/>
+                      </svg>
+                </div>
+                <h3>Médicos Especializados</h3>
+                <p>Encontre psicólogos, terapeutas e neuropediatras.</p>
+                     <a href="medicos.html" class="card-btn">Agendar</a>
+            </div>
+
+            <div class="card card-atividades">
+                <div class="card-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="35" height="30" fill="currentColor" class="bi bi-joystick" viewBox="0 0 16 16">
+                        <path d="M10 2a2 2 0 0 1-1.5 1.937v5.087c.863.083 1.5.377 1.5.726 0 .414-.895.75-2 .75s-2-.336-2-.75c0-.35.637-.643 1.5-.726V3.937A2 2 0 1 1 10 2"/>
+                        <path d="M0 9.665v1.717a1 1 0 0 0 .553.894l6.553 3.277a2 2 0 0 0 1.788 0l6.553-3.277a1 1 0 0 0 .553-.894V9.665c0-.1-.06-.19-.152-.23L9.5 6.715v.993l5.227 2.178a.125.125 0 0 1 .001.23l-5.94 2.546a2 2 0 0 1-1.576 0l-5.94-2.546a.125.125 0 0 1 .001-.23L6.5 7.708l-.013-.988L.152 9.435a.25.25 0 0 0-.152.23"/>
+                      </svg>
+                </div>
+                <h3>Explore Atividades</h3>
+                <p>Sugestões de exercícios e desenvolvimento sensorial.</p>
+                <a href="atividades.html" class="card-btn">Ver Atividades</a>
+            </div>
+
+            <div class="card card-comunidades">
+                <div class="card-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="35" height="30" fill="currentColor" class="bi bi-chat-left-text" viewBox="0 0 16 16">
+                        <path d="M14 1a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H4.414A2 2 0 0 0 3 11.586l-2 2V2a1 1 0 0 1 1-1zM2 0a2 2 0 0 0-2 2v12.793a.5.5 0 0 0 .854.353l2.853-2.853A1 1 0 0 1 4.414 12H14a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2z"/>
+                        <path d="M3 3.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5M3 6a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9A.5.5 0 0 1 3 6m0 2.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5"/>
+                      </svg>
+                </div>
+                <h3>Comunidades</h3>
+                <p>Troque experiências e encontre apoio em grupos.</p>
+                <a href="comunidades.html" class="card-btn">Participar</a>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        // Lógica do Nome de Usuário
+        const usuarioLogado = localStorage.getItem('usuarioLogado');
+        if (usuarioLogado) {
+            const dados = JSON.parse(usuarioLogado);
+            const primeiroNome = dados.nome.split(' ')[0]; 
+            document.getElementById('saudacao').innerText = `Bem-vindo(a), ${primeiroNome}!`;
+        }
+
+    </script>
+    <script src="theme.js"></script>
+</body>
+</html>

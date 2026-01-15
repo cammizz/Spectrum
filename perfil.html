@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spectrum - Perfil</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="site-header">
+        <div class="header-content">
+            <div class="logo-section">
+                <img src="img/logo_spectrum.png" alt="Logo" class="header-logo">
+                <div class="header-text">
+                    <h1>SPECTRUM</h1>
+                    <p>Connect & Thrive</p>
+                </div>
+            </div>
+            <nav class="desktop-nav">
+                <a href="home.html" class="nav-link">Home</a>
+                <a href="notificacoes.html" class="nav-link">Notificações</a>
+                <a href="eventos.html" class="nav-link">Eventos</a>
+                <a href="perfil.html" class="nav-link active">Perfil</a> 
+
+            </nav>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <div class="profile-card">
+            <div class="profile-header">
+                <div class="avatar-circle">👤</div> <h2 id="nome-usuario">Carregando...</h2>
+                <p id="email-usuario">email@exemplo.com</p>
+            </div>
+            
+            <div class="profile-options">
+                <button class="option-btn" onclick="window.location.href='editar-dados.html'">Editar Dados Pessoais</button>
+                <button class="option-btn" onclick="window.location.href='acessibilidade.html'">Configurações de Acessibilidade</button>
+                <button class="option-btn" onclick="window.location.href='suporte.html'">
+                    <span class="btn-content">
+                        <span class="icon"></span> Ajuda e Suporte
+                    </span>
+                    <span class="arrow"></span>
+                </button>
+                
+                <button id="logout-btn" class="logout-btn">Sair da Conta</button>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // 1. Carregar dados do usuário
+        const usuarioLogado = localStorage.getItem('usuarioLogado');
+        if (usuarioLogado) {
+            const dados = JSON.parse(usuarioLogado);
+            document.getElementById('nome-usuario').innerText = dados.nome;
+            document.getElementById('email-usuario').innerText = dados.email;
+        } else {
+            window.location.href = 'login.html';
+        }
+
+        // 2. Funcionalidade de Logout
+        document.getElementById('logout-btn').addEventListener('click', () => {
+            // Remove o usuário logado da memória
+            localStorage.removeItem('usuarioLogado');
+            alert('Você saiu da conta.');
+            window.location.href = 'login.html';
+        });
+
+        </script>
+        <script src="theme.js"></script>
+</body>
+</html>

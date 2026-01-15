@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spectrum - Criar Conta</title>
+    <link rel="stylesheet" href="style.css"> </head>
+<body class="centralizar-tudo">
+    <button id="theme-toggle" class="theme-btn" aria-label="Alternar modo escuro">
+        <svg id="sun-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display: none;">
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+        </svg>
+    
+        <svg id="moon-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+        </svg>
+    </button>
+    <div class="container">
+        <div class="logo-area">
+            <img src="img/logo_spectrum.png" alt="Logo Spectrum Connect & Thrive" class="logo">
+            <h1>SPECTRUM</h1>
+            <p>Connect & Thrive</p>
+        </div>
+
+        <h2>Crie sua conta</h2>
+
+        <form id="signup-form">
+            <div class="input-group">
+                <input type="text" id="nome" placeholder="Nome completo" required>
+            </div>
+            <div class="input-group">
+                <input type="email" id="email" placeholder="E-mail" required>
+            </div>
+            <div class="input-group">
+                <input type="password" id="senha" placeholder="Crie uma senha" required>
+            </div>
+            <div class="input-group">
+                <input type="password" id="confirmar-senha" placeholder="Confirme a senha" required>
+            </div>
+
+            <div class="terms-checkbox">
+                <input type="checkbox" id="terms" required>
+                <label for="terms">Eu concordo com os Termos: Condições</label>
+            </div>
+
+            <button type="submit" class="btn-primary">Cadastrar</button>
+        </form>
+
+        <p class="login-prompt">Já tem uma conta? <a href="login.html">Faça login</a></p>
+    </div>
+    <script>
+        const toggleBtn = document.getElementById('theme-toggle');
+        const sunIcon = document.getElementById('sun-icon');
+        const moonIcon = document.getElementById('moon-icon');
+        const body = document.body;
+    
+        toggleBtn.addEventListener('click', () => {
+            // 1. Alterna a classe 'dark-mode' no corpo do site
+            body.classList.toggle('dark-mode');
+    
+            // 2. Verifica se o modo escuro está ativo para trocar os ícones
+            const isDarkMode = body.classList.contains('dark-mode');
+    
+            if (isDarkMode) {
+                moonIcon.style.display = 'none'; // Esconde a lua
+                sunIcon.style.display = 'block'; // Mostra o sol
+            } else {
+                moonIcon.style.display = 'block'; // Mostra a lua
+                sunIcon.style.display = 'none'; // Esconde o sol
+            }
+        });
+    </script>
+    <script>
+    const signupForm = document.getElementById('signup-form');
+
+    signupForm.addEventListener('submit', (e) => {
+        e.preventDefault(); // Impede o envio padrão do formulário
+
+        const nome = document.getElementById('nome').value;
+        const email = document.getElementById('email').value;
+        const senha = document.getElementById('senha').value;
+        const confirmarSenha = document.getElementById('confirmar-senha').value;
+
+        // 1. Validação simples de senha
+        if (senha !== confirmarSenha) {
+            alert('As senhas não coincidem!');
+            return;
+        }
+
+        // 2. Verifica se já existe alguém com esse e-mail
+        if (localStorage.getItem(email)) {
+            alert('Este e-mail já está cadastrado!');
+            return;
+        }
+
+        // 3. Cria o objeto do usuário
+        const usuario = {
+            nome: nome,
+            email: email,
+            senha: senha
+        };
+
+        // 4. Salva no LocalStorage (O e-mail será a "chave" para achar depois)
+        // JSON.stringify converte os dados para texto para poder salvar
+        localStorage.setItem(email, JSON.stringify(usuario));
+
+        alert('Conta criada com sucesso!');
+        
+        // 5. Redireciona para a tela de login
+        window.location.href = 'login.html';
+    });
+</script>
+</body>
+</html>

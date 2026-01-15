@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="widht=device=widht, initial-scale=1.0">
+	<title>Jogo da Memória</title>
+	<link rel ="shortcut icon" href="images/Costas.jpg" type="image/x-icon">
+	<link rel="stylesheet" href="style.css"> <style>
+	body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            text-align: center;
+            background-image: url('images/background2.jpg');
+	    background-size: cover;
+        }
+        h1 {
+            color: #007bff;
+            font-size: 3em;
+            margin-bottom: 0.1em;
+	    background-color: white;
+	    background-position: top;
+        }
+        p {
+            font-size: 1.5em;
+	    margin-bottom: 0.1em;
+            color: #007bff;
+	    background-color: white;
+        }
+        #final-message {
+            font-weight: bold;
+            margin-top: 1em;
+            color: #007bff;
+	    background-color: white;
+	}
+	a {
+		display: inline-block;
+		margin-top: 20px;
+		text-decoration: none;
+		color: #007bff;
+		background: rgba(255, 255, 255, 0.9);
+		border: 2px solid white;
+		padding: 12px 24px;
+		font-size: 1.2em;
+		font-weight: bold;
+		border-radius: 10px;
+		transition: 0.3s;
+		box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+	}
+
+    </style>
+</head>
+<body>
+    <h1>PARABÉNS!</h1>
+    <p>Você concluiu o jogo da memória do seu amigão da vizinhança, o Homem-Aranha!</p>
+    <p id="final-message"></p>
+    <a href="game.html">Jogar Novamente</a>
+    <a href="../../atividades.html">Voltar para Atividades</a>
+    <script>
+	    document.addEventListener('DOMContentLoaded', () => {
+            const finalMessage = document.getElementById('final-message');
+            const playerName = localStorage.getItem('finalPlayerName');
+            const finalTime = localStorage.getItem('finalTime');
+
+            if (playerName && finalTime) {
+                finalMessage.textContent = `${playerName}, você completou o jogo em ${finalTime} segundos!`;
+            } else {
+                finalMessage.textContent = 'Informações de pontuação não encontradas.';
+            }
+            
+            // Limpa as chaves temporárias para a próxima jogada
+            localStorage.removeItem('finalPlayerName');
+            localStorage.removeItem('finalTime');
+        });
+    </script>
+</body>
+</html>

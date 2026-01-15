@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spectrum - Acessibilidade</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="site-header">
+        <div class="header-content">
+            <a href="perfil.html" class="back-link">← Voltar</a>
+            <div class="header-text">
+                <h1>Acessibilidade</h1>
+                <p>Ajuste o app para você</p>
+            </div>
+            <div style="width: 50px;"></div>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <div class="settings-card">
+            
+            <!-- Opção 1: Tamanho da Fonte -->
+            <div class="setting-item">
+                <div class="setting-info">
+                    <h3>Tamanho do Texto</h3>
+                    <p>Aumente ou diminua o tamanho da fonte.</p>
+                </div>
+                <div class="font-controls">
+                    <button onclick="mudarFonte('diminuir')" class="font-btn">A-</button>
+                    <span id="font-display">Normal</span>
+                    <button onclick="mudarFonte('aumentar')" class="font-btn">A+</button>
+                </div>
+            </div>
+
+            <div class="divider"></div>
+
+            <!-- Opção 2: Fonte para Dislexia -->
+            <div class="setting-item">
+                <div class="setting-info">
+                    <h3>Fonte Amigável (Dislexia)</h3>
+                    <p>Muda para uma fonte mais fácil de ler.</p>
+                </div>
+                <label class="switch">
+                    <input type="checkbox" id="dyslexia-toggle">
+                    <span class="slider round"></span>
+                </label>
+            </div>
+
+            <div class="divider"></div>
+
+            <!-- Opção 3: Alto Contraste (Modo Escuro) -->
+            <div class="setting-item">
+                <div class="setting-info">
+                    <h3>Modo Escuro</h3>
+                    <p>Reduz o brilho da tela.</p>
+                </div>
+                <label class="switch">
+                    <input type="checkbox" id="dark-mode-toggle">
+                    <span class="slider round"></span>
+                </label>
+            </div>
+
+        </div>
+    </main>
+
+    <script>
+        const body = document.body;
+        const fontDisplay = document.getElementById('font-display');
+        
+        // --- 1. Tamanho da Fonte ---
+        let tamanhoAtual = localStorage.getItem('tamanhoFonte') || 'normal';
+        aplicarFonte(tamanhoAtual);
+
+        function mudarFonte(acao) {
+            if (acao === 'aumentar') tamanhoAtual = 'grande';
+            else if (acao === 'diminuir') tamanhoAtual = 'normal';
+            
+            aplicarFonte(tamanhoAtual);
+            localStorage.setItem('tamanhoFonte', tamanhoAtual);
+        }
+
+        function aplicarFonte(tamanho) {
+            body.classList.remove('fonte-grande');
+            if (tamanho === 'grande') {
+                body.classList.add('fonte-grande');
+                fontDisplay.innerText = "Grande";
+            } else {
+                fontDisplay.innerText = "Normal";
+            }
+        }
+
+        // --- 2. Fonte para Dislexia ---
+        const dyslexiaToggle = document.getElementById('dyslexia-toggle');
+        const isDyslexia = localStorage.getItem('fonteDislexia') === 'true';
+        
+        dyslexiaToggle.checked = isDyslexia;
+        if(isDyslexia) body.classList.add('dyslexia-font');
+
+        dyslexiaToggle.addEventListener('change', () => {
+            if(dyslexiaToggle.checked) {
+                body.classList.add('dyslexia-font');
+                localStorage.setItem('fonteDislexia', 'true');
+            } else {
+                body.classList.remove('dyslexia-font');
+                localStorage.setItem('fonteDislexia', 'false');
+            }
+        });
+
+        // --- 3. Modo Escuro (Sincronizado) ---
+        const dmToggle = document.getElementById('dark-mode-toggle');
+        const isDark = body.classList.contains('dark-mode'); // Já controlado pelo script global se houver
+        
+        // Verifica estado inicial (assumindo que você tem script global de dark mode)
+        if(localStorage.getItem('theme') === 'dark') {
+            body.classList.add('dark-mode');
+            dmToggle.checked = true;
+        }
+
+        dmToggle.addEventListener('change', () => {
+            body.classList.toggle('dark-mode');
+            // Salva preferência (compatível com seus outros scripts)
+            if(body.classList.contains('dark-mode')){
+                localStorage.setItem('theme', 'dark'); // Use a mesma chave que usou nos outros arquivos se tiver
+            } else {
+                localStorage.setItem('theme', 'light');
+            }
+        });
+    </script>
+</body>
+</html>

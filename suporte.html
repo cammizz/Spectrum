@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spectrum - Suporte IA</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css">
+    
+    <style>
+        /* 1. Configuração Padrão (Claro) */
+        body {
+            background: #f0f2f5 !important; /* Fundo cinza padrão */
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        .site-header {
+            width: 100%;
+            padding: 15px 20px;
+            box-sizing: border-box;
+            background: white;
+            border-bottom: 1px solid #ddd;
+            flex-shrink: 0;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+            width: 100%;
+            height: 50px;
+        }
+
+        .header-text {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* --- 2. CORREÇÃO DO MODO ESCURO (ATUALIZADO) --- */
+        /* Essas regras só aplicam quando o modo escuro está ligado */
+        body.dark-mode {
+            /* AQUI ESTÁ A MUDANÇA: Usamos o degradê igual ao do Perfil */
+            background: linear-gradient(135deg, #2c3e50 0%, #000000 100%) !important;
+        }
+
+        body.dark-mode .site-header {
+            background-color: #1e1e1e; /* Header Escuro */
+            border-bottom-color: #333;
+        }
+
+        body.dark-mode .header-text h1 {
+            color: #ffffff; /* Texto Branco */
+        }
+        
+        body.dark-mode .header-text p {
+            color: #bbbbbb; /* Texto Cinza Claro */
+        }
+
+        body.dark-mode .back-link {
+            color: #ffffff;
+        }
+
+        body.dark-mode .chat-container-full {
+            /* Deixamos transparente para ver o degradê do body atrás */
+            background-color: transparent; 
+        }
+
+        body.dark-mode .input-area {
+            background-color: #1e1e1e; /* Barra de Digitar Escura */
+            border-top-color: #333;
+        }
+
+        body.dark-mode .input-area input {
+            background-color: #2d2d2d; /* Campo de Input Escuro */
+            color: #fff;
+            border-color: #444;
+        }
+    </style>
+</head>
+<body>
+    <header class="site-header">
+        <div class="header-content">
+            <a href="perfil.html" class="back-link">← Voltar</a>
+            
+            <div class="header-text">
+                <h1>Spectrum AI</h1>
+                <p>Assistente Virtual</p>
+            </div>
+
+            <button onclick="chamarHumano()" class="human-support-btn">
+                🎧 Falar com Humano
+            </button>
+        </div>
+    </header>
+
+    <main class="chat-container-full">
+        <div id="chat-box" class="chat-box">
+            </div>
+
+        <div class="input-area">
+            <input type="text" id="user-input" placeholder="Digite sua dúvida ou escolha um tema..." autocomplete="off">
+            <button onclick="enviarMensagem()" id="send-btn">➤</button>
+        </div>
+    </main>
+
+    <script>
+    const chatBox = document.getElementById('chat-box');
+    const userInput = document.getElementById('user-input');
+    
+    const usuarioLogado = JSON.parse(localStorage.getItem('usuarioLogado'));
+    const inicialUsuario = usuarioLogado ? usuarioLogado.nome.charAt(0).toUpperCase() : 'U';
+    const primeiroNome = usuarioLogado ? usuarioLogado.nome.split(' ')[0] : 'Visitante';
+
+    window.onload = function() {
+        setTimeout(() => {
+            const msgInicial = `
+                Olá, <b>${primeiroNome}</b>! Sou a IA do Spectrum. 🤖<br><br>
+                Você pode perguntar sobre:<br>
+                🩺 Médicos e Agendamentos<br>
+                📅 Eventos e Horários<br>
+                ⚙️ Senha, Conta e Foto<br>
+                🔗 Nome e Email<br>
+                🧩 Atividades e Terapias
+            `;
+            adicionarMensagem('bot', msgInicial);
+        }, 500);
+    };
+
+    userInput.addEventListener("keypress", function(event) {
+        if (event.key === "Enter") enviarMensagem();
+    });
+
+    function enviarMensagem() {
+        const texto = userInput.value.trim();
+        if (texto === "") return;
+
+        adicionarMensagem('user', texto);
+        userInput.value = '';
+
+        setTimeout(() => {
+            // AQUI ESTÁ O SEGREDO: Removemos acentos e deixamos minúsculo antes de ler
+            const textoTratado = removerAcentos(texto.toLowerCase());
+            const resposta = gerarRespostaIA(textoTratado);
+            adicionarMensagem('bot', resposta);
+        }, 800);
+    }
+
+    // Função mágica que transforma "Médico" em "medico" e "Ação" em "acao"
+    function removerAcentos(str) {
+        return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+    }
+
+    function chamarHumano() {
+        adicionarMensagem('bot', "Redirecionando para atendimento humano... <br>Um especialista entrará no chat em instantes. ⏳");
+    }
+
+    function adicionarMensagem(remetente, texto) {
+        const row = document.createElement('div');
+        row.className = `message-row ${remetente}-row`;
+        const avatarIA = `<div class="chat-avatar bot-avatar">🤖</div>`;
+        const avatarUser = `<div class="chat-avatar user-avatar">${inicialUsuario}</div>`;
+
+        if (remetente === 'bot') {
+            row.innerHTML = `${avatarIA} <div class="message bot-message">${texto}</div>`;
+        } else {
+            row.innerHTML = `<div class="message user-message">${texto}</div> ${avatarUser}`;
+        }
+        chatBox.appendChild(row);
+        chatBox.scrollTop = chatBox.scrollHeight;
+    }
+
+    // --- CÉREBRO DA IA ATUALIZADO ---
+    // --- CÉREBRO DA IA ATUALIZADO (V2) ---
+    // --- CÉREBRO DA IA ATUALIZADO (V3 - Frases Adaptadas) ---
+    function gerarRespostaIA(p) {
+        
+        // 1. CONTA
+        if (p.includes('conta')) {
+            return "Para gerenciar seus dados, senha ou foto, basta acessar a aba <b>Perfil</b> no menu superior.";
+        }
+
+        // 2. HORÁRIOS (Frase adaptada para soar mais natural)
+        if (p.includes('horario') || p.includes('hora') || p.includes('disponibilidade')) {
+            return "Os horários variam de acordo com o profissional. Ao clicar em agendar com um especialista, você verá a agenda completa dele para escolher o melhor momento.";
+        }
+
+        // 3. MÉDICOS / AGENDAMENTO
+        if (p.includes('medico') || p.includes('doutor') || p.includes('saude') || p.includes('especialista')) {
+            return "Contamos com uma rede de <b>Neuropediatras</b>, <b>Psicólogos</b>, <b>Fonoaudiólogos</b>, <b>Psiquiatras</b> e <b>Terapeutas Ocupacionais</b> prontos para atender.  Acesse a área de 'Médicos Especializados' na tela inicial para filtrar.";
+        }
+        if (p.includes('agenda') || p.includes('marcar') || p.includes('consulta')) {
+            return "Para marcar uma consulta, vá até a <b>Home</b> e clique no cartão verde. Lá você escolhe o médico e o horário.";
+        }
+        if (p.includes('fono') || p.includes('terapia') || p.includes('neuro')) {
+            return "Sim! Temos esses especialistas. Acesse a área de 'Médicos Especializados' na tela inicial para filtrar.";
+        }
+
+        // 4. ATIVIDADES
+        if (p.includes('atividade') || p.includes('exercicio') || p.includes('brincar')) {
+            return "Você encontra várias sugestões de desenvolvimento e atividades sensoriais na aba <b>Home > Explore Atividades</b>.";
+        }
+
+        // 5. EVENTOS 
+        if (p.includes('evento') || p.includes('workshop') || p.includes('piquenique') || p.includes('data')) {
+            return "Para ver datas e locais dos nossos próximos encontros, dê uma olhada na aba <b>Eventos</b>.";
+        }
+
+        // 6. SENHA / LOGIN / FOTO
+        if (p.includes('senha') || p.includes('login') || p.includes('entrar')) {
+            return "Esqueceu a senha? Sem problemas. Na tela de login, clique em 'Esqueceu sua senha?' para recuperar.";
+        }
+        if (p.includes('foto') || p.includes('perfil') || p.includes('imagem')) {
+            return "Quer mudar o visual? Vá em <b>Perfil</b> e clique no ícone de câmera 📷 em cima da sua foto.";
+        }
+        if (p.includes('nome') || p.includes('email') || p.includes('dado')) {
+            return "Você pode atualizar suas informações clicando no botão 'Editar Dados Pessoais' dentro da aba <b>Perfil</b>.";
+        }
+
+        // 7. GERAL
+        if (p.includes('humano') || p.includes('pessoa') || p.includes('atendente')) {
+            return "Sem problemas. Clique no botão vermelho <b>'Falar com Humano'</b> lá em cima para chamar nossa equipe.";
+        }
+        if (p.includes('oi') || p.includes('ola') || p.includes('tudo bem')) {
+            return "Olá! 👋 Estou por aqui. Pode perguntar sobre médicos, horários ou sua conta.";
+        }
+        if (p.includes('obrigado') || p.includes('valeu')) {
+            return "Imagina! Estou sempre à disposição. 💙";
+        }
+
+        return "Hum, não entendi bem. Tente perguntar coisas como: 'como agendar', 'mudar senha' ou 'horários'.";
+    }
+</script>
+<script src="theme.js"></script>
+</body>
+</html>

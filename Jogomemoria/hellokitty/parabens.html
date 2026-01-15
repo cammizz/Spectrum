@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="imagens/favicon.png">
+    <title>Fim de jogo!</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-image: url('imagens/bg.png');
+            background-position: center;
+            background-size: cover;
+            text-align: center;
+            margin: 0;
+        }
+        .container {
+            padding: 40px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color:#3880c4;
+        }
+        p {
+            font-size: 1.2em;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 1em;
+            color: white;
+            background-color: #51b8e7;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #3880c4;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Parabéns!</h1>
+        <p>Você completou o jogo em <strong id="final-time"></strong> segundos.</p>
+        <button id="play-again">Jogar Novamente</button>
+        <button id="play-again2">Voltar para Atividades</button>
+    </div>
+
+
+    <script>
+        // Pega os parâmetros da URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const time = urlParams.get('time');
+
+       const finalTimeElement = document.getElementById('final-time');
+
+        if (finalTimeElement) {
+            finalTimeElement.textContent = time;
+        }
+
+        document.getElementById('play-again').addEventListener('click', () => {
+            window.location.href = 'index.html'; 
+        }); 
+
+        document.getElementById('play-again2').addEventListener('click', () => {
+            window.location.href = '../../atividades.html'; 
+        });
+    </script>
+</body>
+</html>

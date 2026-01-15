@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spectrum - Início</title>
+    <link rel="stylesheet" href="daniel.css">
+</head>
+
+<body>
+
+    <header class="site-header">
+        <div class="header-content">
+            <a href="atividades.html" class="back-link">← Voltar</a>
+        </div>
+    </header>
+
+    <main class="container-diario">
+        <h1>Calendário de Humor</h1>
+        
+        <div class="legenda">
+            <button class="btn btn-feliz" onclick="mudarCor('feliz')">😊</button>
+            <button class="btn btn-triste" onclick="mudarCor('triste')">🙁</button>
+            <button class="btn btn-raiva" onclick="mudarCor('raiva')">😠</button>
+            <button class="btn btn-neutro" onclick="mudarCor('neutro')">😐</button>
+            <button class="btn btn-reset" onclick="mudarCor('reset')">🔄</button>
+        </div>
+        
+        <div id="mes"></div>
+
+        <div class="calendario" id="grade"></div>
+
+        <hr class="separator">
+
+<section class="insights-section">
+    <h2>Resumo do Mês</h2>
+    <div class="mood-summary">
+        <p>Seu humor predominante: <strong id="predominante">Nada registrado ainda</strong></p>
+        
+        <ul id="lista-estatisticas" style="list-style: none; padding: 0;">
+            </ul>
+
+        <p id="aviso-raiva" style="color: red; display: none;">
+            ⚠️ Você teve muitos dias de Raiva. Cuidado!
+        </p>
+    </div>
+</section>
+    </main>
+
+    <script src="agendar.js"></script>
+    <script src="theme.js"></script>
+
+</body>
+</html>

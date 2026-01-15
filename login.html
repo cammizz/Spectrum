@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spectrum - Login</title>
+    <link rel="stylesheet" href="style.css"> 
+</head>
+<body class="centralizar-tudo">
+    <button id="theme-toggle" class="theme-btn" aria-label="Alternar modo escuro">
+        <svg id="sun-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display: none;">
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+        </svg>
+    
+        <svg id="moon-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+        </svg>
+    </button>
+    <div class="container">
+        <div class="logo-area">
+            <img src="img/logo_spectrum.png" alt="Logo Spectrum Connect & Thrive" class="logo">
+            <h1>SPECTRUM</h1>
+            <p>Connect & Thrive</p>
+        </div>
+
+        <h2>Acesse sua conta</h2>
+
+        <form id="login-form">
+            <div class="input-group">
+                <input type="email" id="email" placeholder="E-mail" required>
+            </div>
+            <div class="input-group">
+                <input type="password" id="senha" placeholder="Senha" required>
+            </div>
+
+            <p class="forgot-password"><a href="reset-password.html">Esqueceu sua senha?</a></p>
+
+            <button type="submit" class="btn-primary">Login</button>
+        </form>
+
+        <p class="login-prompt">Não tem uma conta? <a href="index.html">Crie uma conta</a></p>
+    </div>
+    <script>
+        const toggleBtn = document.getElementById('theme-toggle');
+        const sunIcon = document.getElementById('sun-icon');
+        const moonIcon = document.getElementById('moon-icon');
+        const body = document.body;
+    
+        toggleBtn.addEventListener('click', () => {
+            // 1. Alterna a classe 'dark-mode' no corpo do site
+            body.classList.toggle('dark-mode');
+    
+            // 2. Verifica se o modo escuro está ativo para trocar os ícones
+            const isDarkMode = body.classList.contains('dark-mode');
+    
+            if (isDarkMode) {
+                moonIcon.style.display = 'none'; // Esconde a lua
+                sunIcon.style.display = 'block'; // Mostra o sol
+            } else {
+                moonIcon.style.display = 'block'; // Mostra a lua
+                sunIcon.style.display = 'none'; // Esconde o sol
+            }
+        });
+    </script>
+    <script>
+    const loginForm = document.getElementById('login-form');
+
+    loginForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+
+        const email = document.getElementById('email').value;
+        const senha = document.getElementById('senha').value;
+
+        // 1. Busca o usuário salvo pelo e-mail
+        const usuarioSalvo = localStorage.getItem(email);
+
+        if (usuarioSalvo) {
+            // Converte o texto de volta para dados
+            const dadosUsuario = JSON.parse(usuarioSalvo);
+
+            // 2. Verifica a senha
+            if (senha === dadosUsuario.senha) {
+                localStorage.setItem('usuarioLogado', JSON.stringify(dadosUsuario));
+                alert('Login realizado com sucesso! Bem-vindo(a), ' + dadosUsuario.nome);
+                window.location.href = 'home.html';
+            } else {
+                alert('Senha incorreta.');
+            }
+        } else {
+            alert('Usuário não encontrado. Verifique o e-mail.');
+        }
+    });
+</script>
+</body>
+</html>
