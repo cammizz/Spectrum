@@ -120,7 +120,7 @@
     const inicialUsuario = usuarioLogado ? usuarioLogado.nome.charAt(0).toUpperCase() : 'U';
     const primeiroNome = usuarioLogado ? usuarioLogado.nome.split(' ')[0] : 'Visitante';
 
-    window.onload = function() {
+  document.addEventListener("DOMContentLoaded", function() {
         setTimeout(() => {
             const msgInicial = `
                 Olá, <b>${primeiroNome}</b>! Sou a IA do Spectrum. 🤖<br><br>
@@ -133,7 +133,7 @@
             `;
             adicionarMensagem('bot', msgInicial);
         }, 500);
-    };
+    });
 
     userInput.addEventListener("keypress", function(event) {
         if (event.key === "Enter") enviarMensagem();
@@ -241,4 +241,5 @@
 </script>
 <script src="theme.js"></script>
 </body>
+
 </html>
