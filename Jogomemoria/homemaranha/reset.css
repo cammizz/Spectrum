@@ -52,7 +52,7 @@ header {
 	transform: rotateY(180deg);
 }
 .back {
-	background-image: url('images/Costas.jpg');
+	background-image: url('Images/Costas.jpg');
 	backface-visibility: hidden;
 }
 .reveal-card {
@@ -66,4 +66,5 @@ header {
 	.grid {
 		grid-template-columns: repeat(5, 1fr);
 	}
+
 }
